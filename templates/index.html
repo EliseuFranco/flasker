@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog</title>
-  </head>
-  <body>
-    <h1>Creating a blog with Flask</h1>
-    <p>This journey will gonna be fun</p>
-    <h2>Hello world</h2>
+{% extends "base.html" %} {% block content %}
+<h1>Creating a blog with Flask</h1>
+<p>This journey will gonna be fun</p>
+<h2>Hello world</h2>
 
-    <p>{{stuff | safe}}</p>
+<p>{{stuff | safe}}</p>
 
-    {% for data in lista %}
-    <p>{{data}}</p>
-    {% endfor %}
+{% for data in lista %}
+<p>{{data}}</p>
+{% endfor %}
 
-    <p>{{lista.0}}</p>
-  </body>
-</html>
+<p>{{lista.0}}</p>
+
+{% endblock %}
