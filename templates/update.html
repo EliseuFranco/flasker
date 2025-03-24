@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block content %}
+<style>
+  .btn-dark,
+  .btn-primary {
+    margin-top: 10px;
+  }
+  .btn-primary {
+    background-color: #bb2d3b;
+    border: none;
+  }
+</style>
+
+{% for message in get_flashed_messages() %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{message}}</strong>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %}
+
+<div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+  <h1>User update:</h1>
+  <form action="/update/{{user.id}}" method="post">
+    {{form.hidden_tag()}} {{form.name.label}} {{form.name(class="form-control",
+    value = user.name)}} {{form.email.label}} {{form.email(class="form-control",
+    value = user.email)}} {{form.favourite_color.label}}
+    {{form.favourite_color(class="form-control", value = user.favourite_color)}}
+    {{form.submit(class="btn btn-dark")}}
+    <a
+      class="btn btn-primary"
+      href="{{url_for('delete', id = user.id)}}"
+      role="button"
+      >Delete</a
+    >
+  </form>
+</div>
+{% endblock %}
